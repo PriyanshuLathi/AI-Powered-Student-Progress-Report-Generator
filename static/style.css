@@ -7,6 +7,7 @@
 body {
   background-color: #f4f4f4;
   font-family: Arial, sans-serif;
+  font-size: 16px; /* Base font size */
 }
 
 #header-div {
@@ -26,16 +27,17 @@ body {
 h1 {
   margin: 0;
   flex-grow: 1;
+  font-size: 1.5rem; /* Scales with screen */
 }
 
 img {
-  margin-left: 40px;
-  height: 80px;
+  margin-left: 20px; /* Reduced from 40px */
+  height: 60px; /* Reduced from 80px */
   width: auto;
 }
 
 #outer-div {
-  margin-top: calc(80px + 20px);
+  margin-top: calc(60px + 20px); /* Adjusted for smaller header */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,9 +45,10 @@ img {
 }
 
 #container-div {
-  width: 60%;
+  width: 90%; /* Default to 90% for flexibility */
+  max-width: 1200px; /* Cap for large screens */
   background-color: white;
-  padding: 15px 30px;
+  padding: 15px 20px; /* Reduced padding slightly */
   border-radius: 10px;
   box-shadow: 1px 1px 5px black;
   max-height: 80vh;
@@ -53,6 +56,7 @@ img {
   overflow-x: hidden;
 }
 
+/* Scrollbar Styling */
 #container-div::-webkit-scrollbar {
   width: 8px;
 }
@@ -91,23 +95,29 @@ p {
 input:not(.radio),
 textarea,
 select {
-  width: 100%;
+  width: 97%;
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  font-size: 1rem; /* Scales with screen */
 }
 
 #add-milestone-div {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 10px; /* Add spacing */
+  margin-right: 37px;
 }
 
 .milestone-item {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-right: 37px;
   margin-bottom: 5px;
+  flex-wrap: wrap; /* Wrap on small screens */
 }
 
 .milestone-label {
@@ -117,14 +127,15 @@ select {
 .milestone-select {
   width: 60px;
   padding: 5px;
-  margin-right: 20px;
+  margin-right: 20px; /* Reduced from 20px */
 }
 
 .btn-close {
   font-size: 12px;
 }
 
-#submit-btn {
+#submit-btn,
+#add-milestone-btn {
   color: white;
   background-color: #fb9800;
   padding: 7px 10px;
@@ -132,13 +143,15 @@ select {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  font-size: 1rem;
 }
 
-#submit-btn:hover {
+#submit-btn:hover,
+#add-milestone-btn:hover {
   background-color: #e68900;
 }
 
-/* Modal Overlay */
+/* Modal Styling */
 .milestone-modal-overlay {
   position: fixed;
   top: 0;
@@ -149,32 +162,26 @@ select {
   z-index: 999;
 }
 
-/* Modal Box */
 .milestone-modal-box {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 0px 20px 20px 20px;
+  padding: 0 15px 15px 15px; /* Reduced padding */
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  min-width: 610px;
-  max-width: 80vw;
+  width: 90%; /* Fluid width */
+  max-width: 800px; /* Cap for large screens */
   max-height: 70vh;
   overflow-y: auto;
 }
 
 .milestone-modal-box .btn-close {
-  position: sticky;
-  top: 2%;
-  left: 100%;
-  font-size: 18px;
-  cursor: pointer;
+  font-size: 16px;
 }
 
-/* Scrollbar Styling */
 .milestone-modal-box::-webkit-scrollbar {
   width: 8px;
 }
@@ -193,7 +200,6 @@ select {
   background: #e68c06;
 }
 
-/* Close (X) Button */
 .close-modal-btn {
   position: absolute;
   top: 10px;
@@ -204,7 +210,6 @@ select {
   cursor: pointer;
 }
 
-/* Milestone Option (List Item) */
 .milestone-option {
   display: flex;
   justify-content: space-between;
@@ -227,19 +232,10 @@ select {
   background: #ca7a01;
 }
 
-#add-milestone-btn {
-  color: white;
-  background-color: #fb9800;
-  padding: 5px 5px;
-  font-size: 12px;
-  border: #9b630f;
-  border-radius: 3px;
-}
-
 .sticky-header {
   position: sticky;
   background-color: white;
-  padding: 15px;
+  padding: 10px;
   padding-right: 0;
   padding-bottom: 0;
   display: flex;
@@ -247,121 +243,16 @@ select {
   z-index: 10;
 }
 
-@media (max-width: 1025px) {
+/* Media Queries */
+
+/* Large Laptops (≤1200px) */
+@media (max-width: 1200px) {
   #container-div {
-    padding-right: 45px;
-    max-height: 77vh;
-    width: 60%;
-  }
-}
-
-@media (max-width: 769px) {
-  h1 {
-    margin: 0 !important;
     width: 75%;
-    padding: 5px 65px;
-    font-size: 30px !important;
-  }
-
-  #container-div {
-    width: 80%;
-    max-height: 77vh;
-  }
-
-  .milestone-modal-box {
-    width: 570px;
-  }
-}
-
-@media (max-width: 426px) {
-  img {
-    margin-left: 0;
-    height: 60px;
-    width: auto;
   }
 
   h1 {
-    margin-bottom: 0 !important;
-    width: 75%;
-    font-size: 25px !important;
-    padding: 0px 20px;
-  }
-
-  #outer-div {
-    margin-top: 75px;
-  }
-
-  #container-div {
-    width: 100%;
-    max-height: 82vh;
-    padding: 15px;
-  }
-
-  label {
-    font-size: 15px;
-  }
-
-  input:not(.radio),
-  textarea,
-  select {
-    font-size: 15px;
-    width: 96%;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
-  select#age,
-  input#dob,
-  input#doa,
-  input#next_date,
-  textarea#comments,
-  select#env {
-    font-size: 15px;
-    padding: 4px;
-  }
-
-  p {
-    font-size: 15px;
-    margin-top: 0.9rem !important;
-    margin-bottom: 0.8rem !important;
-  }
-
-  #submit-btn {
-    font-size: 15px;
-  }
-
-  .milestone-select {
-    width: 50px;
-    margin-right: 3px;
-  }
-
-  .milestone-modal-box {
-    min-width: 400px;
-  }
-}
-
-@media (max-width: 376px) {
-  h1 {
-    font-size: 21px !important;
-    padding: 0 20px;
-  }
-
-  img {
-    height: 55px;
-  }
-
-  .milestone-modal-box {
-    min-width: 350px;
-    padding: 15px;
-  }
-}
-
-@media (max-width: 321px) {
-  h1 {
-    margin-bottom: 0 !important;
-    width: 75%;
-    font-size: 18px !important;
-    padding: 0 12px;
+    font-size: 1.4rem;
   }
 
   img {
@@ -369,15 +260,167 @@ select {
   }
 
   #outer-div {
-    padding: 10px;
-    margin-top: 73px;
+    margin-top: calc(50px + 20px);
+  }
+}
+
+/* Tablets/iPads (≤992px) */
+@media (max-width: 992px) {
+  #container-div {
+    width: 80%;
+    padding: 10px 15px;
   }
 
-  #container-div {
-    max-height: 84vh;
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  img {
+    height: 40px;
+    margin-left: 15px;
+  }
+
+  #outer-div {
+    margin-top: calc(40px + 15px);
+  }
+
+  input:not(.radio),
+  textarea,
+  select {
+    padding: 6px;
+  }
+
+  #submit-btn,
+  #add-milestone-btn {
+    padding: 6px 8px;
   }
 
   .milestone-modal-box {
-    min-width: 310px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 913px) {
+  h1 {
+    width: 70%;
+  }
+
+  #container-div {
+    width: 98%;
+    max-height: 85vh;
+  }
+
+  #outer-div {
+    margin-top: 150px;
+  }
+
+  img {
+    height: 125px;
+    margin-left: 15px;
+  }
+}
+
+/* iPad Pro Portrait / Large Tablets (≤834px) */
+@media (max-width: 834px) {
+  #container-div {
+    width: 85%;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  img {
+    height: 35px;
+  }
+
+  #header-div {
+    padding: 8px;
+  }
+
+  .milestone-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .milestone-select {
+    margin-right: 0;
+    width: 50px;
+  }
+}
+
+/* Mobile Phones (≤576px) */
+@media (max-width: 576px) {
+  #container-div {
+    width: 95%;
+    max-height: 84vh;
+  }
+
+  h1 {
+    width: 60% !important;
+    font-size: 22px !important;
+  }
+
+  img {
+    height: 65px;
+    margin-left: 10px;
+  }
+
+  #outer-div {
+    padding: 10px;
+    margin-top: 100px;
+  }
+
+  input:not(.radio),
+  textarea,
+  select {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  #submit-btn,
+  #add-milestone-btn {
+    width: 100%; /* Full-width buttons */
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  #add-milestone-div {
+    margin-right: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .milestone-item {
+    margin-right: 8px;
+  }
+
+  .milestone-modal-box {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .milestone-option {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .milestone-option button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  #container-div {
+    width: 98%;
+    max-height: 80vh;
+  }
+}
+
+@media (max-width: 375px) {
+  #container-div {
+    width: 98%;
+    max-height: 80vh;
   }
 }
